@@ -30,8 +30,6 @@ public class StudentController {
         return studentRepository.findAll();
     }
 
-
-
     @SuppressWarnings("unchecked")
     @GetMapping("/students/{value}")
     public List<Student> getUsersbyName(@PathVariable String value){
@@ -46,7 +44,7 @@ public class StudentController {
     public ResponseEntity<Student> deleteStudent(@PathVariable Long id){
 
          Optional<Student> temp = studentRepository.findById(id);
-         
+
          if(!temp.isPresent()){ return ResponseEntity.notFound().build();}
         
             studentRepository.deleteById(id);

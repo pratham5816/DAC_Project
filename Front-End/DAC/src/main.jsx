@@ -6,10 +6,12 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { MyNavbar } from './components/myNavbar.jsx'
+
+
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-     <MyNavbar/>
       <App />
     </BrowserRouter>
   </StrictMode>,

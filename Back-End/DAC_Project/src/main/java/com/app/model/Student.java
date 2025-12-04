@@ -3,7 +3,7 @@ package com.app.model;
 import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -32,6 +32,7 @@ public class Student {
     private LocalDate endDate;
     private String contactNumber;
     private String parentNumber;
+    @Column(unique = true)
     private String mail;
     private String parentMail;
 }

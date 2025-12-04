@@ -1,0 +1,44 @@
+.login-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding-top: 56px;
+}
+
+.login-card {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.login-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-card input {
+  margin-bottom: 16px;
+}
+
+.login-card button {
+  margin-top: 24px;
+  text-transform: none;
+  letter-spacing: 0.5px;
+}
+
+.login-card a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.login-card a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .login-page {
+    padding: 16px;
+  }
+
+  .login-card {
+    margin: 0;
+  }
+}
