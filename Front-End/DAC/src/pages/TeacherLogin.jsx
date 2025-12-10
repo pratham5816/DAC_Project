@@ -12,6 +12,7 @@ import {
   Link as MuiLink
 } from '@mui/material'
 import PeopleIcon from '@mui/icons-material/People'
+import { teacherLogin } from '../services/teacherService'
 import '../styles/LoginPage.css'
 
 export default function TeacherLogin() {
@@ -33,15 +34,22 @@ export default function TeacherLogin() {
     }
 
     try {
-      // Replace with actual API call
-      console.log('Teacher login attempt:', { email, password })
-      // Simulated delay
-      setTimeout(() => {
-        alert('Teacher login successful!')
-        setLoading(false)
-      }, 1000)
+      const response = await teacherLogin(email, password)
+      
+      // Check if response contains teacher ID
+      if (response && response.id) {
+        // Store teacher data in localStorage
+        localStorage.setItem('teacher', JSON.stringify(response))
+        localStorage.setItem('teacherToken', 'teacher_token_' + response.id)
+        
+        alert(`Welcome back, ${response.firstName}!`)
+        navigate('/teacher/dashboard')
+      } else {
+        setError('Invalid credentials. Please try again.')
+      }
     } catch (err) {
-      setError('Login failed. Please try again.')
+      setError(err.message || 'Login failed. Please try again.')
+    } finally {
       setLoading(false)
     }
   }

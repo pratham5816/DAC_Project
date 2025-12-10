@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-// import axios from "axios";
+import { studentLogin } from '../services/studentService'
 import {
   Card,
   CardContent,
@@ -10,7 +10,8 @@ import {
   Typography,
   Box,
   Alert,
-  Link as MuiLink
+  Link as MuiLink,
+  CircularProgress
 } from '@mui/material'
 import SchoolIcon from '@mui/icons-material/School'
 import '../styles/LoginPage.css'
@@ -32,19 +33,41 @@ export default function StudentLogin() {
       setLoading(false)
       return
     }
-
     try {
-      // Replace with actual API call
+      // ✅ Call API to authenticate student (using axios from service layer)
+      const response = await studentLogin(email, password)
+      console.log('✅ Login response:', response)
+      console.log('Email:', email)
+      console.log('Password:', password)
 
+      // ✅ Backend now returns Student object with id, firstName, etc.
+      if(response && response.id){
+           console.log('✅ Student login successful:', response.firstName)
       
-      console.log('Student login attempt:', { email, password })
-      // Simulated delay
-      setTimeout(() => {
-        alert('Student login successful!')
-        setLoading(false)
-      }, 1000)
+        // ✅ Show success message and redirect
+        alert(`Welcome ${response.firstName || 'Student'}!`)
+        
+        // ✅ Store FULL student data and token in localStorage
+        localStorage.setItem('student', JSON.stringify(response))
+        localStorage.setItem('token', response.token || 'student-token-' + response.id)
+        
+        // Navigate after storing
+        navigate('/student/dashboard')
+      } else{
+
+        setError('❌ Student not registered or Invalid Credentials')
+        console.error('Login failed - invalid response')
+        document.body.style.backgroundColor = '#ffebee'
+        setTimeout(() => {
+          document.body.style.backgroundColor = ''
+        }, 2000)
+      }
+
+     
     } catch (err) {
-      setError('Login failed. Please try again.')
+      setError(err.message || 'Login failed. Please check your email and password.')
+      console.error('Login error:', err)
+    } finally {
       setLoading(false)
     }
   }
@@ -106,11 +129,16 @@ export default function StudentLogin() {
                   '&:hover': { backgroundColor: '#45a049' },
                   py: 1.5,
                   fontSize: '1rem',
-                  fontWeight: 'bold'
+                  fontWeight: 'bold',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 1
                 }}
                 type="submit"
                 disabled={loading}
               >
+                {loading && <CircularProgress size={20} color="inherit" />}
                 {loading ? 'Logging in...' : 'Login as Student'}
               </Button>
             </form>

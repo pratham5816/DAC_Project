@@ -19,9 +19,11 @@ public class Student {
     @Id
     @GeneratedValue
     private Long id;
+    @Column(nullable = false)
     private String userName;
     private String firstName;
     private String lastName;
+    @Column(nullable = false)
     private String password;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dob;

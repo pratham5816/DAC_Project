@@ -3,7 +3,7 @@ package com.app.model;
 import java.time.LocalDate;
 
 
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -20,6 +20,8 @@ public class Teacher {
     @Id
     @GeneratedValue
     private Long id;
+    @Column(unique = true)
+    private String mail;
     private Long instituteId;
     private String userName;
     private String firstName;
@@ -30,6 +32,7 @@ public class Teacher {
     private String streamOrSubject;
     private String ContactNumber;
     private String Address;
+    @Column(nullable = false)
     private String password;
 
 }
