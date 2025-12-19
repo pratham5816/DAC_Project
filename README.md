@@ -1,28 +1,43 @@
-# 🎓 DAC Project - Student Management System
+DAC Project – Student Management System
 
-A comprehensive full-stack web application designed to streamline academic operations for educational institutions. This modern Student Management System facilitates seamless interaction between students, teachers, and administrators through an intuitive interface and robust backend architecture.
+A full-stack web application designed to manage academic operations for educational institutions. This project was started as part of the PG-DAC curriculum to understand real-world full-stack development, but was paused midway due to a change in plans. Despite this, it provided strong hands-on learning across frontend, backend, and API integration.
 
-## 🚀 Features
+Project Status
 
-### For Students
-- **Secure Authentication** - Email-based login system with session management
-- **Personalized Dashboard** - View profile information, grades, and academic performance
-- **Real-time Notices** - Stay updated with institutional announcements and important updates
-- **Grade Tracking** - Access subject-wise marks and performance analytics
-- **Profile Management** - View and manage personal information and contact details
+Status: Discontinued (Midway)
+Reason: Change of project direction and learning priorities
+Outcome: Gained practical experience with full-stack architecture, REST APIs, React, Spring Boot, and MySQL integration.
 
-### For Teachers
-- **Teacher Dashboard** - Overview of classes, students, and teaching statistics
-- **Notice Management** - Create, publish, and manage notices for students
-- **Student Overview** - Access complete student roster with detailed information
-- **Class Management** - Track and manage multiple classes efficiently
-- **Performance Monitoring** - View student statistics and academic progress
+Features Implemented
+Student Module
 
-### For Administrators
-- **User Management** - Manage student and teacher accounts
-- **System Overview** - Monitor overall system usage and statistics
-- **Notice Board Control** - Oversee institutional communications
-- **Data Analytics** - Access comprehensive reports and insights
+Email-based login (basic authentication logic)
+
+View profile details
+
+Access notices
+
+View subject-wise marks
+
+Teacher Module
+
+Teacher dashboard
+
+Create and view notices
+
+View student lists
+
+Class-wise data access
+
+Admin Module
+
+Manage students and teachers
+
+View system-wide data
+
+Manage notices
+
+Note: Authentication and APIs were not fully secured and the project was stopped before implementing proper security mechanisms.
 
 ## 🛠️ Technology Stack
 
@@ -65,7 +80,7 @@ DAC_PROJECT/
         └── package.json       # npm dependencies
 ```
 
-## ⚙️ Installation & Setup
+## Installation & Setup
 
 ### Prerequisites
 - Java 17 or higher
@@ -97,21 +112,7 @@ spring.datasource.username=your_username
 spring.datasource.password=your_password
 ```
 
-## 🔐 Security Features
-- Password-based authentication system
-- Role-based access control (Student, Teacher, Admin)
-- CORS configuration for secure cross-origin requests
-- Session management with localStorage
-- Secure API endpoints with validation
-
-## 🎯 Key Highlights
-- **Modern Tech Stack** - Built with latest versions of React 19 and Spring Boot 3
-- **Responsive Design** - Mobile-first approach ensuring seamless experience across devices
-- **Clean Architecture** - Separation of concerns with MVC pattern and service layers
-- **RESTful APIs** - Well-structured endpoints following REST principles
-- **Scalable Codebase** - Modular structure allowing easy feature additions
-
-## 📊 API Endpoints
+## API Endpoints
 - `POST /student/checkLogin` - Student authentication
 - `POST /teacher/checkLogin` - Teacher authentication
 - `GET /student/{id}` - Fetch student profile
@@ -119,15 +120,15 @@ spring.datasource.password=your_password
 - `GET /student/getAll` - Get all students
 - `GET /teacher/{id}/classes` - Teacher's class information
 
-## 🤝 Contributing
+## Contributing
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📄 License
+## License
 This project is open source and available for educational purposes.
 
-## 👨‍💻 Developer
+## Developer
 **Pratham** - [GitHub Profile](https://github.com/pratham5816)
 
 ---
 
-⭐ Star this repository if you find it helpful!
+Star this repository if you find it helpful!
